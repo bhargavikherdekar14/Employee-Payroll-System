@@ -1,1 +1,70 @@
-
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+<groupId>com.example</groupId>
+<artifactId>salary-slip</artifactId>
+<version>1.0-SNAPSHOT</version>
+<packaging>jar</packaging>
+<name>salary-slip</name>
+<properties>
+<maven.compiler.source>1.8</maven.compiler.source>
+<maven.compiler.target>1.8</maven.compiler.target>
+</properties>
+<dependencies>
+<!--  iText 5 (for PDF generation)  -->
+<dependency>
+<groupId>com.itextpdf</groupId>
+<artifactId>itextpdf</artifactId>
+<version>5.5.13.3</version>
+</dependency>
+<!--  JUnit 4 for testing  -->
+<dependency>
+<groupId>junit</groupId>
+<artifactId>junit</artifactId>
+<version>4.13.2</version>
+<scope>test</scope>
+</dependency>
+<dependency>
+<groupId>org.json</groupId>
+<artifactId>json</artifactId>
+<version>20250107</version>
+</dependency>
+</dependencies>
+<build>
+<plugins>
+<!--  Compiler plugin  -->
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-compiler-plugin</artifactId>
+<version>3.8.1</version>
+</plugin>
+<!--  Jar plugin to define main class  -->
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-jar-plugin</artifactId>
+<version>3.2.0</version>
+<configuration>
+<archive>
+<manifest>
+<mainClass>com.example.payroll.EmployeeSalarySlip</mainClass>
+</manifest>
+</archive>
+</configuration>
+</plugin>
+<!--  Shade plugin to include dependencies in final jar  -->
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-shade-plugin</artifactId>
+<version>3.2.4</version>
+<executions>
+<execution>
+<phase>package</phase>
+<goals>
+<goal>shade</goal>
+</goals>
+</execution>
+</executions>
+</plugin>
+</plugins>
+</build>
+</project>
